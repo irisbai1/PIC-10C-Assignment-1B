@@ -76,10 +76,12 @@ class Player {
    public:
       // Constructor.
       //    Assigns initial amount of money
-      Player(int m);
+    Player(int m) : money(m) {}
 
       // You decide what functions you'll need...
-
+    const int get_money();
+    int update_money(int change);
+    
    private:
       int money;
       // You decide what extra fields (if any) you'll need...
