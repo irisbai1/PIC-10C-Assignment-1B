@@ -113,21 +113,67 @@ string Card::get_spanish_rank() const {
    return rankName;
 }
 
-
-
 // Accessor: returns a string with the suit of the card in English
 // This is just a stub! Modify it to your liking.
 string Card::get_english_suit() const {
-   return "";
+    string suitName;
+    switch (suit) {
+       case OROS:
+          suitName = "golds";
+      break;
+       case COPAS:
+          suitName = "cups";
+      break;
+       case ESPADAS:
+          suitName = "swords";
+      break;
+       case BASTOS:
+          suitName = "clubs";
+      break;
+       default: break;
+    }
+    return suitName;
 }
 
 // Accessor: returns a string with the rank of the card in English
 // This is just a stub! Modify it to your liking.
 string Card::get_english_rank() const {
-   return "";
+    string rankName;
+    switch (rank) {
+       case AS:
+          rankName = "One";
+      break;
+       case DOS:
+          rankName = "Two";
+      break;
+       case TRES:
+          rankName = "Three";
+      break;
+       case CUATRO:
+          rankName = "Four";
+      break;
+       case CINCO:
+          rankName = "Five";
+      break;
+       case SEIS:
+          rankName = "Six";
+      break;
+       case SIETE:
+          rankName = "Seven";
+      break;
+       case SOTA:
+          rankName = "Ten";
+      break;
+       case CABALLO:
+          rankName = "Eleven";
+      break;
+       case REY:
+          rankName = "Twelve";
+      break;
+       default: break;
+    }
+    return rankName;
 }
-
-
 
 // Assigns a numerical value to card based on rank.
 // AS=1, DOS=2, ..., SIETE=7, SOTA=10, CABALLO=11, REY=12
@@ -146,11 +192,40 @@ bool Card::operator < (Card card2) const {
 /* *************************************************
    Hand class
    ************************************************* */
-// Implemente the member functions of the Hand class here.
+double Hand:: get_value() const{
+    return value;
+}
+    
+double Hand:: update_value(int card_value) {
+    value = value + card_value;
+    return value;
+}
+
+vector<Card*> Hand::draw() {
+    Card* newest = new Card();
+    hand.push_back(newest);
+    
+    if (newest->get_rank()<= 7){
+        update_value(newest->get_rank());
+    }
+    else {update_value(0.5);}
+    
+    return hand;
+}
+// Implement the member functions of the Hand class here.
 
 
 
 /* *************************************************
    Player class
    ************************************************* */
-// Implemente the member functions of the Player class here.
+// Implement the member functions of the Player class here.
+    
+double Player::get_money() const {
+    return money;
+}
+    
+double Player::update_money(double change) {
+    money = money + change;
+    return money;
+}
