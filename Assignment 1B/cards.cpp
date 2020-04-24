@@ -207,6 +207,14 @@ bool Card::operator < (Card card2) const {
 double Hand:: get_value() const{
     return value;
 }
+
+Card* Hand:: get_card(size_t pos) const {
+    return deck[pos];
+}
+    
+size_t Hand:: size() const{
+    return deck.size();
+}
     
 double Hand:: update_value(int card_value) {
     value = value + card_value;
@@ -215,18 +223,18 @@ double Hand:: update_value(int card_value) {
 
 vector<Card*> Hand::draw() {
     Card* newest = new Card();
-    hand.push_back(newest);
+    deck.push_back(newest);
     
     if (newest->get_rank()<= 7){
         update_value(newest->get_rank());
     }
     else {update_value(0.5);}
     
-    return hand;
+    return deck;
 }
 
-void Hand::print_hand() const {
-    for (Card* val: hand) {
+void Hand::print_deck() const {
+    for (Card* val: deck) {
     cout << "        ";
     val->print_card();
     cout << endl;

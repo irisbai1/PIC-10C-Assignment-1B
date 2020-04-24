@@ -68,22 +68,25 @@ private:
 class Hand {
    public:
     // Constructor
-    Hand() : value(0), hand()  {}
+    Hand() : value(0), deck()  {}
 
     
     // Accessor
     double get_value() const;
+    Card* get_card(size_t pos) const;
+    size_t size() const;
     // updates value of hand
     double update_value(int card_value);
     // adds a new Card to the Hand
     vector<Card*> draw();
-    void print_hand() const;
+    void print_deck() const;
     
     
    private:
     // value of all of Cards in Hand
     int value;
-    vector<Card*> hand;
+    // cards in Hand
+    vector<Card*> deck;
     
       // You decide what fields you'll need...
 };
