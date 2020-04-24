@@ -192,6 +192,26 @@ bool Card::operator < (Card card2) const {
 /* *************************************************
    Hand class
    ************************************************* */
+double Hand:: get_value() const{
+    return value;
+}
+    
+double Hand:: update_value(int card_value) {
+    value = value + card_value;
+    return value;
+}
+
+vector<Card*> Hand::draw() {
+    Card* newest = new Card();
+    hand.push_back(newest);
+    
+    if (newest->get_rank()<= 7){
+        update_value(newest->get_rank());
+    }
+    else {update_value(0.5);}
+    
+    return hand;
+}
 // Implement the member functions of the Hand class here.
 
 
@@ -201,11 +221,11 @@ bool Card::operator < (Card card2) const {
    ************************************************* */
 // Implement the member functions of the Player class here.
     
-const int Player::get_money() {
+double Player::get_money() const {
     return money;
 }
     
-int Player::update_money(int change) {
+double Player::update_money(double change) {
     money = money + change;
     return money;
 }

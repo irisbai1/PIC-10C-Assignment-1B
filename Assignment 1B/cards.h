@@ -62,12 +62,23 @@ private:
 
 class Hand {
    public:
-      // A vector of Cards
-      Hand();
+    // Constructor
+    Hand() : value(0), hand()  {}
 
-      // You decide what functions you'll need...
-
+    
+    // Accessor
+    double get_value() const;
+    // updates value of hand
+    double update_value(int card_value);
+    // adds a new Card to the Hand
+    vector<Card*> draw();
+    
+    
    private:
+    // value of all of Cards in Hand
+    int value;
+    vector<Card*> hand;
+    
       // You decide what fields you'll need...
 };
 
@@ -76,14 +87,14 @@ class Player {
    public:
       // Constructor.
       //    Assigns initial amount of money
-    Player(int m) : money(m) {}
+    Player(double m) : money(m) {}
 
       // You decide what functions you'll need...
-    const int get_money();
-    int update_money(int change);
+    double get_money() const;
+    double update_money(double change);
     
    private:
-      int money;
+      double money;
       // You decide what extra fields (if any) you'll need...
 };
 
