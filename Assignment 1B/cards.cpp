@@ -126,7 +126,7 @@ string Card::get_english_suit() const {
           suitName = "cups";
       break;
        case ESPADAS:
-          suitName = "swords";
+          suitName = "spades";
       break;
        case BASTOS:
           suitName = "clubs";
@@ -142,7 +142,7 @@ string Card::get_english_rank() const {
     string rankName;
     switch (rank) {
        case AS:
-          rankName = "One";
+          rankName = "Ace";
       break;
        case DOS:
           rankName = "Two";
@@ -184,7 +184,7 @@ int Card::get_rank() const {
 
 void Card::print_card() const {
     string spanish_name = get_spanish_rank() + " de " + get_spanish_suit();
-    cout << left<< setw(20) << spanish_name;
+    cout << left << setw(20) << spanish_name;
     string english_name = "(" + get_english_rank() + " of " + get_english_suit() + ")";
     cout << right << setw(15) << english_name;
 }
