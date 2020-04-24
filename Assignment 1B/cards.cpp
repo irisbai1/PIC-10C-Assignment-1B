@@ -9,10 +9,11 @@
 #include "cards.h"
 #include <cstdlib>
 #include <iostream>
+#include <iomanip>
 
 /*
 You might or might not need these two extra libraries
-#include <iomanip>
+
 #include <algorithm>
 */
 
@@ -181,6 +182,15 @@ int Card::get_rank() const {
    return static_cast<int>(rank) + 1 ;
 }
 
+void Card::print_card() const {
+    string spanish_name = get_spanish_rank() + " de " + get_spanish_suit();
+    cout << left<< setw(20) << spanish_name;
+    string english_name = "(" + get_english_rank() + " of " + get_english_suit() + ")";
+    cout << right << setw(15) << english_name;
+}
+
+
+
 // Comparison operator for cards
 // Returns TRUE if card1 < card2
 bool Card::operator < (Card card2) const {
@@ -215,7 +225,12 @@ vector<Card*> Hand::draw() {
     return hand;
 }
 
-void Hand::print_hand() const {}
+void Hand::print_hand() const {
+    for (Card* val: hand) {
+    val->print_card();
+    cout << endl;
+    }
+}
 
 
 /* *************************************************

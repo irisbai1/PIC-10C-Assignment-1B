@@ -48,11 +48,16 @@ class Card {
       // Converts card rank to number.
       // The possible returns are: 1, 2, 3, 4, 5, 6, 7, 10, 11 and 12
       int get_rank() const;
-
+    
+      // Prints card info in Spanish and English
+      void print_card() const;
+    
       // Compare rank of two cards. E.g: Eight<Jack is true.
       // Assume Ace is always 1.
       // Useful if you want to sort the cards.
       bool operator < (Card card2) const;
+    
+      
 
 private:
       suit_t suit;
