@@ -72,6 +72,7 @@ class Hand {
     double update_value(int card_value);
     // adds a new Card to the Hand
     vector<Card*> draw();
+    void print_hand() const;
     
     
    private:
@@ -87,7 +88,7 @@ class Player {
    public:
       // Constructor.
       //    Assigns initial amount of money
-    Player(double m) : money(m) {}
+    Player() : money(100) {}
 
       // You decide what functions you'll need...
     double get_money() const;

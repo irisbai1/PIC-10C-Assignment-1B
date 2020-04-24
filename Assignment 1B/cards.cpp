@@ -162,13 +162,13 @@ string Card::get_english_rank() const {
           rankName = "Seven";
       break;
        case SOTA:
-          rankName = "Ten";
+          rankName = "Jack";
       break;
        case CABALLO:
-          rankName = "Eleven";
+          rankName = "Queen";
       break;
        case REY:
-          rankName = "Twelve";
+          rankName = "King";
       break;
        default: break;
     }
@@ -192,6 +192,8 @@ bool Card::operator < (Card card2) const {
 /* *************************************************
    Hand class
    ************************************************* */
+// Implement the member functions of the Hand class here.
+    
 double Hand:: get_value() const{
     return value;
 }
@@ -212,8 +214,8 @@ vector<Card*> Hand::draw() {
     
     return hand;
 }
-// Implement the member functions of the Hand class here.
 
+void Hand::print_hand() const {}
 
 
 /* *************************************************
