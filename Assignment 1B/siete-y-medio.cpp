@@ -20,7 +20,6 @@ using namespace std;
 
 // Non member functions declarations (if any)
 
-
 // Non member functions implementations (if any)
 
 
@@ -45,11 +44,25 @@ int main(){
     
     yourHand->draw();
     cout << "Your Cards:" << endl;
-    yourHand->print_hand();
+    yourHand->print_deck();
     
+    char response;
+    cout << "Your total is " << yourHand->get_value() << ". Do you want another card (y/n)? ";
+    cin >> response;
     
-    
-    
+    while(response == 'y') {
+        yourHand->draw();
+        Card* newest = yourHand->get_card(yourHand->size()-1);
+        cout << "New Card: " << endl;
+        cout << "        ";
+        newest->print_card();
+        cout << endl;
+        cout << "Your Cards:" << endl;
+        yourHand->print_deck();
+        
+        cout << "Your total is " << yourHand->get_value() << ". Do you want another card (y/n)? ";
+        cin >> response;
+    }
     
    return 0;
 }
