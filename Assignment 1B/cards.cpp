@@ -227,6 +227,7 @@ vector<Card*> Hand::draw() {
 
 void Hand::print_hand() const {
     for (Card* val: hand) {
+    cout << "        ";
     val->print_card();
     cout << endl;
     }

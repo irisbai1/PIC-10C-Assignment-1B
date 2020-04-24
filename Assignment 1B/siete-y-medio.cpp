@@ -27,5 +27,29 @@ using namespace std;
 // Stub for main
 int main(){
    /* --STATEMENTS-- */
+    Player* you = new Player();
+    Player* dealer = new Player();
+    Hand* yourHand = new Hand();
+    Hand* dealersHand = new Hand();
+    
+    cout << "You have $100. Enter bet: ";
+    double bet;
+    cin >> bet;
+    cout << endl;
+    if (bet > you->get_money()) {
+        cout << "You only have $" << you->get_money() << ". Please bet less than $" << you->get_money() << "." << endl;
+        cout << "Enter bet: ";
+        cin >> bet;
+        cout << endl;
+    }
+    
+    yourHand->draw();
+    cout << "Your Cards:" << endl;
+    yourHand->print_hand();
+    
+    
+    
+    
+    
    return 0;
 }
