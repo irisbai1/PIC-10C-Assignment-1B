@@ -72,9 +72,10 @@ int main(){
     while (dealersHand->get_value() < 5.5) {
         dealersHand->draw();
     }
+  
     cout << "Dealer's Cards:" << endl;
     dealersHand->print_deck();
     cout << "The dealer's total is " << dealersHand->get_value() << "." << endl;
-    
+ 
    return 0;
 }
