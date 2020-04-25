@@ -27,5 +27,7 @@ using namespace std;
 // Stub for main
 int main(){
    /* --STATEMENTS-- */
+    
+    cout << "This is a test for conflict";
    return 0;
 }
