@@ -55,6 +55,7 @@ int main(){
         Card* newest = yourHand->get_card(yourHand->size()-1);
         cout << "New Card: " << endl;
         cout << "        ";
+        cout << "this is a test";
         newest->print_card();
         cout << endl;
         cout << "Your Cards:" << endl;
