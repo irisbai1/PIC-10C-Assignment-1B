@@ -48,11 +48,16 @@ class Card {
       // Converts card rank to number.
       // The possible returns are: 1, 2, 3, 4, 5, 6, 7, 10, 11 and 12
       int get_rank() const;
-
+    
+      // Prints card info in Spanish and English
+      void print_card() const;
+    
       // Compare rank of two cards. E.g: Eight<Jack is true.
       // Assume Ace is always 1.
       // Useful if you want to sort the cards.
       bool operator < (Card card2) const;
+    
+      
 
 private:
       suit_t suit;
@@ -63,21 +68,25 @@ private:
 class Hand {
    public:
     // Constructor
-    Hand() : value(0), hand()  {}
+    Hand() : value(0), deck()  {}
 
     
     // Accessor
     double get_value() const;
+    Card* get_card(size_t pos) const;
+    size_t size() const;
     // updates value of hand
     double update_value(int card_value);
     // adds a new Card to the Hand
     vector<Card*> draw();
+    void print_deck() const;
     
     
    private:
     // value of all of Cards in Hand
     int value;
-    vector<Card*> hand;
+    // cards in Hand
+    vector<Card*> deck;
     
       // You decide what fields you'll need...
 };
@@ -87,7 +96,7 @@ class Player {
    public:
       // Constructor.
       //    Assigns initial amount of money
-    Player(double m) : money(m) {}
+    Player() : money(100) {}
 
       // You decide what functions you'll need...
     double get_money() const;

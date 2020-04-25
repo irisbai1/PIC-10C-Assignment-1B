@@ -9,10 +9,11 @@
 #include "cards.h"
 #include <cstdlib>
 #include <iostream>
+#include <iomanip>
 
 /*
 You might or might not need these two extra libraries
-#include <iomanip>
+
 #include <algorithm>
 */
 
@@ -125,7 +126,7 @@ string Card::get_english_suit() const {
           suitName = "cups";
       break;
        case ESPADAS:
-          suitName = "swords";
+          suitName = "spades";
       break;
        case BASTOS:
           suitName = "clubs";
@@ -141,7 +142,7 @@ string Card::get_english_rank() const {
     string rankName;
     switch (rank) {
        case AS:
-          rankName = "One";
+          rankName = "Ace";
       break;
        case DOS:
           rankName = "Two";
@@ -162,13 +163,13 @@ string Card::get_english_rank() const {
           rankName = "Seven";
       break;
        case SOTA:
-          rankName = "Ten";
+          rankName = "Jack";
       break;
        case CABALLO:
-          rankName = "Eleven";
+          rankName = "Queen";
       break;
        case REY:
-          rankName = "Twelve";
+          rankName = "King";
       break;
        default: break;
     }
@@ -181,6 +182,15 @@ int Card::get_rank() const {
    return static_cast<int>(rank) + 1 ;
 }
 
+void Card::print_card() const {
+    string spanish_name = get_spanish_rank() + " de " + get_spanish_suit();
+    cout << left << setw(20) << spanish_name;
+    string english_name = "(" + get_english_rank() + " of " + get_english_suit() + ")";
+    cout << right << setw(15) << english_name;
+}
+
+
+
 // Comparison operator for cards
 // Returns TRUE if card1 < card2
 bool Card::operator < (Card card2) const {
@@ -192,8 +202,18 @@ bool Card::operator < (Card card2) const {
 /* *************************************************
    Hand class
    ************************************************* */
+// Implement the member functions of the Hand class here.
+    
 double Hand:: get_value() const{
     return value;
+}
+
+Card* Hand:: get_card(size_t pos) const {
+    return deck[pos];
+}
+    
+size_t Hand:: size() const{
+    return deck.size();
 }
     
 double Hand:: update_value(int card_value) {
@@ -203,17 +223,23 @@ double Hand:: update_value(int card_value) {
 
 vector<Card*> Hand::draw() {
     Card* newest = new Card();
-    hand.push_back(newest);
+    deck.push_back(newest);
     
     if (newest->get_rank()<= 7){
         update_value(newest->get_rank());
     }
     else {update_value(0.5);}
     
-    return hand;
+    return deck;
 }
-// Implement the member functions of the Hand class here.
 
+void Hand::print_deck() const {
+    for (Card* val: deck) {
+    cout << "        ";
+    val->print_card();
+    cout << endl;
+    }
+}
 
 
 /* *************************************************
