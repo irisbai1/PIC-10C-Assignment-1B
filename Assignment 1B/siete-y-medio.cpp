@@ -60,9 +60,19 @@ int main(){
         cout << "Your Cards:" << endl;
         yourHand->print_deck();
         
+        if (yourHand->get_value() < 7.5) {
         cout << "Your total is " << yourHand->get_value() << ". Do you want another card (y/n)? ";
         cin >> response;
+        }
+        else {response = 'n';}
     }
+    
+    while (dealersHand->get_value() < 5.5) {
+        dealersHand->draw();
+    }
+    cout << "Dealer's Cards:" << endl;
+    dealersHand->print_deck();
+    cout << "The dealer's total is " << dealersHand->get_value() << "." << endl;
     
    return 0;
 }
