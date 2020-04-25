@@ -216,7 +216,7 @@ size_t Hand:: size() const{
     return deck.size();
 }
     
-double Hand:: update_value(int card_value) {
+double Hand:: update_value(double card_value) {
     value = value + card_value;
     return value;
 }
@@ -225,10 +225,10 @@ vector<Card*> Hand::draw() {
     Card* newest = new Card();
     deck.push_back(newest);
     
-    if (newest->get_rank()<= 7){
-        update_value(newest->get_rank());
+    if (newest->get_rank() <= 7){
+        this->update_value(newest->get_rank());
     }
-    else {update_value(0.5);}
+    else {this->update_value(0.5);}
     
     return deck;
 }
