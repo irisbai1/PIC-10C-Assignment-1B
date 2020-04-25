@@ -31,6 +31,8 @@ int main(){
     Hand* yourHand = new Hand();
     Hand* dealersHand = new Hand();
     
+    srand(static_cast<unsigned int>(time(nullptr)));
+    
     cout << "You have $100. Enter bet: ";
     double bet;
     cin >> bet;
@@ -41,15 +43,15 @@ int main(){
         cin >> bet;
         cout << endl;
     }
-    
+
     yourHand->draw();
     cout << "Your Cards:" << endl;
     yourHand->print_deck();
-    
+
     char response;
     cout << "Your total is " << yourHand->get_value() << ". Do you want another card (y/n)? ";
     cin >> response;
-    
+
     while(response == 'y') {
         yourHand->draw();
         Card* newest = yourHand->get_card(yourHand->size()-1);
@@ -59,10 +61,21 @@ int main(){
         cout << endl;
         cout << "Your Cards:" << endl;
         yourHand->print_deck();
-        
+
+        if (yourHand->get_value() < 7.5) {
         cout << "Your total is " << yourHand->get_value() << ". Do you want another card (y/n)? ";
         cin >> response;
+        }
+        else {response = 'n';}
+    }
+
+    while (dealersHand->get_value() < 5.5) {
+        dealersHand->draw();
     }
   
+    cout << "Dealer's Cards:" << endl;
+    dealersHand->print_deck();
+    cout << "The dealer's total is " << dealersHand->get_value() << "." << endl;
+ 
    return 0;
 }
