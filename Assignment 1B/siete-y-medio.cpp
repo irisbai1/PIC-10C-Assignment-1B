@@ -63,6 +63,6 @@ int main(){
         cout << "Your total is " << yourHand->get_value() << ". Do you want another card (y/n)? ";
         cin >> response;
     }
-    
+  
    return 0;
 }
