@@ -1,0 +1,12 @@
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+### Xcode Patch ###
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcnoj

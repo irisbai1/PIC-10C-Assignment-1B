@@ -33,7 +33,11 @@ int main(){
     
     srand(static_cast<unsigned int>(time(nullptr)));
     
-    cout << "You have $100. Enter bet: ";
+    int game = 1;
+    
+    while (you->get_money() > 0 || you -> get_money() < 1000) {
+    
+    cout << "You have $" << you->get_money()<< ". Enter bet: ";
     double bet;
     cin >> bet;
     cout << endl;
@@ -68,14 +72,51 @@ int main(){
         }
         else {response = 'n';}
     }
+    
+    cout << endl << "Dealer's turn." << endl;
+    
 
     while (dealersHand->get_value() < 5.5) {
         dealersHand->draw();
+        Card* newest = dealersHand->get_card(dealersHand->size()-1);
+        cout << "New Card: " << endl;
+        cout << "        ";
+        newest->print_card();
+        cout << endl;
+        cout << "Dealer's Cards:" << endl;
+        dealersHand->print_deck();
     }
-  
-    cout << "Dealer's Cards:" << endl;
-    dealersHand->print_deck();
-    cout << "The dealer's total is " << dealersHand->get_value() << "." << endl;
- 
+    
+    cout << "The dealer's total is " << dealersHand->get_value() << "." << endl << endl;
+    
+    // result of round
+    // Case 1: you come closer to 7½ than the dealer or the dealer busts but you did not bust
+    if ((yourHand->get_value() <= 7.5 && yourHand->get_value() > dealersHand->get_value()) ||
+        (yourHand->get_value() <= 7.5 && dealersHand->get_value() >= 7.5))
+    {
+        cout << "You win $" << bet << "." << endl << endl;
+        you->update_money(bet);
+    }
+    // Case 2: dealer comes closer to 7½ than you, or the you bust
+    else if ((dealersHand->get_value() <= 7.5 && dealersHand->get_value() > yourHand->get_value()) || (dealersHand->get_value() <= 7.5 && yourHand->get_value() >= 7.5))
+    {
+        cout << "Too bad. You lose $" << bet << "." << endl << endl;
+        you->update_money(-1*bet);
+    }
+    // Case 3: both you and the player bust
+    else if (dealersHand->get_value() > 7.5 && yourHand->get_value() > 7.5)
+    {
+        cout << "Too bad. You lose $" << bet << "." << endl << endl;
+        you->update_money(-1*bet);
+    }
+    // Case 4
+    else if (dealersHand->get_value() == yourHand->get_value() && yourHand->get_value() <= 7.5) {
+        cout << "Nobody wins!" << endl << endl;
+    }
+       
+        game++;
+    }
+    
+    
    return 0;
 }
