@@ -1,7 +1,7 @@
 # PIC-10C-Assignment-1B
 PIC 10C Assignment 1B card game
 
-This is the code for the card game Siete y Medio.
+This is the code for the card game Siete y Medio. Record of game play will be stored in sieteymedio.txt.
 
 cards.h
 This is the file for the interfaces for the Card, Hand, and Player class
