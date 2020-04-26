@@ -11,13 +11,6 @@
 #include <iostream>
 #include <iomanip>
 
-/*
-You might or might not need these two extra libraries
-
-#include <algorithm>
-*/
-
-
 /* *************************************************
    Card class
    ************************************************* */
