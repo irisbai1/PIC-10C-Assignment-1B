@@ -11,13 +11,6 @@
 #include <iostream>
 #include <iomanip>
 
-/*
-You might or might not need these two extra libraries
-
-#include <algorithm>
-*/
-
-
 /* *************************************************
    Card class
    ************************************************* */
@@ -189,7 +182,12 @@ void Card::print_card() const {
     cout << right << setw(15) << english_name;
 }
 
-
+void Card::file_card(ofstream& fout) const {
+    string spanish_name = get_spanish_rank() + " de " + get_spanish_suit();
+    fout << left << setw(20) << spanish_name;
+    string english_name = "(" + get_english_rank() + " of " + get_english_suit() + ")";
+    fout << right << setw(15) << english_name;
+}
 
 // Comparison operator for cards
 // Returns TRUE if card1 < card2
@@ -238,6 +236,14 @@ void Hand::print_deck() const {
     cout << "        ";
     val->print_card();
     cout << endl;
+    }
+}
+    
+void Hand::file_deck(ofstream& fout) const {
+    for (Card* val: deck) {
+    fout << "        ";
+    val->file_card(fout);
+    fout << endl;
     }
 }
 
