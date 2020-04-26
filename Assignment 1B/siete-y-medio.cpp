@@ -33,6 +33,10 @@ int main(){
     
     srand(static_cast<unsigned int>(time(nullptr)));
     
+    int game = 1;
+    
+    while (you->get_money() > 0 || you -> get_money() < 1000) {
+    
     cout << "You have $" << you->get_money()<< ". Enter bet: ";
     double bet;
     cin >> bet;
@@ -108,6 +112,9 @@ int main(){
     // Case 4
     else if (dealersHand->get_value() == yourHand->get_value() && yourHand->get_value() <= 7.5) {
         cout << "Nobody wins!" << endl << endl;
+    }
+       
+        game++;
     }
     
     
