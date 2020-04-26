@@ -41,8 +41,8 @@ int main(){
         Hand* dealersHand = new Hand();
         
         fout << "-----------------------------------------------" << endl << endl;
-        fout << setw(20) << left << "Game Number: " << game;
-        fout << setw(20) << right << "Money Left: " << you->get_money() << endl;
+        fout << left << "Game Number: " << left << game;
+        fout << setw(30) << right << "Money Left: " << you->get_money() << endl;
         
         cout << "You have $" << you->get_money()<< ". Enter bet: ";
         double bet;
@@ -54,7 +54,7 @@ int main(){
             cin >> bet;
             cout << endl;
         }
-        fout << "Bet: " << bet << endl;
+        fout << "Bet: $" << bet << endl;
         
         yourHand->draw();
         cout << "Your Cards:" << endl;
@@ -125,6 +125,7 @@ int main(){
         fout << "Your Cards: " << endl;
         yourHand->file_deck(fout);
         fout << "Your total: " << yourHand->get_value() << endl << endl;
+        fout << "Dealer's Cards: " << endl;
         dealersHand->file_deck(fout);
         fout << "Dealer's total: " << dealersHand->get_value() << endl << endl;
         
