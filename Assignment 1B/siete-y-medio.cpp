@@ -31,7 +31,7 @@ int main(){
     srand(static_cast<unsigned int>(time(nullptr)));
     
     ofstream fout;
-    fout.open("/Users/irisbai/Desktop/PIC 10C/Assignment 1B/sieteymedio.txt", ios::out | ios::trunc);
+    fout.open("sieteymedio.txt", ios::out | ios::trunc);
     
     int game = 1;
     
